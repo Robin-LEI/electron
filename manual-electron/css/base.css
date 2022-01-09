@@ -1,0 +1,9 @@
+h1 {
+    color: red;
+}
+#showBox {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+}

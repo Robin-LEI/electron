@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+    <script src="https://codemirror.net/lib/codemirror.js"></script>    
+    <link rel=stylesheet href="static/CodeMirro/doc/docs.css">   
+    <script src="static/CodeMirro/addon/selection/selection-pointer.js"></script>
+    <script src="static/CodeMirro/mode/xml/xml.js"></script>
+    <script src="static/CodeMirro/mode/javascript/javascript.js"></script>
+    <script src="static/CodeMirro/mode/css/css.js"></script>
+    <script src="static/CodeMirro/mode/vbscript/vbscript.js"></script>
+    <script src="static/CodeMirro/mode/htmlmixed/htmlmixed.js"></script>
+</head>
+<body>
+    <div id="container">
+        <textarea id="textarea"></textarea>
+    </div>
+    <script>
+        // Define an extended mixed-mode that understands vbscript and
+        // leaves mustache/handlebars embedded templates in html mode
+        var mixedMode = {
+          name: "htmlmixed",
+          scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+                         mode: null},
+                        {matches: /(text|application)\/(x-)?vb(a|script)/i,
+                         mode: "vbscript"}]
+        };
+        var editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
+            lineNumbers: true,
+            mode: mixedMode,
+            selectionPointer: true
+        });
+    
+        // editor.setValue(); //设置值 
+        // editor.getValue(); //获取值
+      </script>
+    <script src="renderer/renderer.js"></script>
+    <script src="renderer/clipboard.js"></script>
+</body>
+</html>
