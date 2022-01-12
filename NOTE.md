@@ -201,3 +201,7 @@ window.onload = () => {
 # electron-vue 项目搭建
 - npm install -g vue-cli
 - vue init simulatedgreg/electron-vue electron-vue-project
+
+# nedb数据库
+- 本地数据库
+- cnpm install nedb

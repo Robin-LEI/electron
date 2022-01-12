@@ -21,7 +21,9 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    // 去掉最顶部的导航，以及最大化、最小化、关闭按钮
+    frame: false
   })
 
   mainWindow.loadURL(winURL)
@@ -29,6 +31,11 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
+  // 去掉顶部菜单
+  mainWindow.setMenu(null)
+
+  require('./ipcMain')
 }
 
 app.on('ready', createWindow)
